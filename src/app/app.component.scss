@@ -4,3 +4,15 @@
   align-items: center;
 }
 
+.meal-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 10px;
+}
+#meals{
+  width: 80%;
+}
+#favourite-container{
+  width: 20%;
+}

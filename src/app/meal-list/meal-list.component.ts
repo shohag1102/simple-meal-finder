@@ -5,8 +5,14 @@ import {
   Input,
   OnChanges,
   Output,
-  SimpleChanges,
 } from '@angular/core';
+import {
+  catchError,
+  debounceTime,
+  distinctUntilChanged,
+  of,
+  switchMap,
+} from 'rxjs';
 
 @Component({
   selector: 'app-meal-list',
@@ -20,14 +26,26 @@ export class MealListComponent implements OnChanges {
   constructor(private http: HttpClient) {}
   ngOnChanges(): void {
     if (this.searchText) {
-      this.fetchMeals(this.searchText);
+      this.fetchMeals(this.searchText)
+        .pipe(
+          catchError((error) => {
+            console.error('Error fetching meals:', error);
+            return of([]);
+          })
+        )
+        .subscribe((meals) => {
+          this.meals = meals || [];
+        });
     }
   }
+
   fetchMeals(query: string) {
     const apiUrl = `https://www.themealdb.com/api/json/v1/1/search.php?f=${query}`;
-    this.http.get(apiUrl).subscribe((response: any) => {
-      this.meals = response.meals || [];
-    });
+    return this.http.get<any>(apiUrl).pipe(
+      debounceTime(30),
+      distinctUntilChanged(),
+      switchMap((response) => of(response.meals || []))
+    );
   }
   selectMeal(meal: any) {
     console.log(meal);

@@ -3,26 +3,31 @@
     <h1>Meal Finder</h1>
   </div>
   <div>
-    <mat-form-field>
-      <mat-label>Input</mat-label>
+    <mat-form-field style="width: 400px">
+      <mat-label>Search meal by starting letter</mat-label>
       <input matInput [(ngModel)]="searchText" />
     </mat-form-field>
-    <button (click)="onSearchMeal()" mat-flat-button color="primary">
-      Search
-    </button>
   </div>
 
-  <app-meal-list
-    [searchText]="searchText"
-    (mealSelected)="addToFavorites($event)"
-  ></app-meal-list>
-  <div id="favourite-container">
-    <h3>Favorites</h3>
+  <div class="meal-container">
+    <div id="meals">
+      <app-meal-list
+        [searchText]="searchText"
+        (mealSelected)="addToFavorites($event)"
+      ></app-meal-list>
+    </div>
+    <div id="favourite-container">
+      <h2>My Favorites</h2>
 
-    <mat-list role="list">
-      <mat-list-item *ngFor="let meal of favouriteMeals" role="listitem">{{
-        meal.strMeal
-      }}</mat-list-item>
-    </mat-list>
+      <h1 *ngIf="favouriteMeals.length == 0">No favourites yet!</h1>
+      <mat-list role="list">
+        <mat-list-item
+          id="list-item"
+          *ngFor="let meal of favouriteMeals"
+          role="listitem"
+          >{{ meal.strMeal }}</mat-list-item
+        >
+      </mat-list>
+    </div>
   </div>
 </div>
