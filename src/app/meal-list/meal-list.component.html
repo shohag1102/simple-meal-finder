@@ -1,0 +1,22 @@
+<div *ngIf="meals.length > 0" class="meal-container">
+  <mat-card class="example-card" *ngFor="let meal of meals">
+    <mat-card-header>
+      <mat-card-title>{{ meal.strMeal }}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image [src]="meal.strMealThumb" />
+    <mat-card-actions>
+      <button
+        mat-icon-button
+        color="primary"
+        aria-label="Example icon button with a heart icon"
+        (click)="selectMeal(meal)"
+      >
+        <mat-icon>favorite</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<div id="no-food-conatiner">
+  <p *ngIf="meals.length == 0">No foods found!</p>
+</div>
