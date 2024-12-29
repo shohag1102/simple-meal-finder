@@ -6,7 +6,7 @@ Meal Finder is an Angular-based web application that allows users to search for 
 ## Live Demo
 You can check out the live version of the app by clicking the link below:
 
-[**Live Demo**]([https://your-app-name.vercel.app/](https://subtle-chimera-b14739.netlify.app/))
+[**Live Demo**](https://subtle-chimera-b14739.netlify.app/)
 
 ## Features
 - Search for meals by name.
