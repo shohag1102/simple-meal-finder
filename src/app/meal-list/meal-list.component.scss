@@ -1,5 +1,5 @@
 .example-card {
-  max-width: 400px;
+  max-width: 300px;
 }
 
 .example-header-image {
@@ -7,9 +7,13 @@
   background-size: cover;
 }
 .meal-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 10px;
+  // display: grid;
+  // grid-template-columns: 1fr 1fr 1fr;
+  // gap: 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap:20px
 }
 
 #no-food-conatiner {

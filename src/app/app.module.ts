@@ -16,12 +16,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { MealListComponent } from './meal-list/meal-list.component';
-import { MealDetailsComponent } from './meal-details/meal-details.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatListModule } from '@angular/material/list';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
-  declarations: [AppComponent, MealListComponent, MealDetailsComponent],
+  declarations: [AppComponent, MealListComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -38,6 +38,8 @@ import { MatListModule } from '@angular/material/list';
     MatListModule,
     MatTooltipModule,
     MatProgressBarModule,
+    MatChipsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent],
